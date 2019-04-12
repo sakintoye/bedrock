@@ -3,14 +3,15 @@ module "azure-provider" {
 }
 
 resource "azurerm_resource_group" "cluster" {
+  count    = "${var.resource_group_preallocated == "1" ? 0 : 1}"
   name     = "${var.resource_group_name}"
   location = "${var.resource_group_location}"
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
   name                = "${var.cluster_name}"
-  location            = "${azurerm_resource_group.cluster.location}"
-  resource_group_name = "${azurerm_resource_group.cluster.name}"
+  location            = "${var.resource_group_location}"
+  resource_group_name = "${var.resource_group_preallocated == "0" ? element(concat(azurerm_resource_group.cluster.*.name, list("")), 0) : var.resource_group_name}"
   dns_prefix          = "${var.dns_prefix}"
   kubernetes_version  = "${var.kubernetes_version}"
 

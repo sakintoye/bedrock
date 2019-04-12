@@ -3,8 +3,14 @@ module "provider" {
 }
 
 resource "azurerm_resource_group" "cluster_rg" {
+  count    = "${var.resource_group_preallocated == "1" ? 0 : 1}"
   name     = "${var.resource_group_name}"
   location = "${var.resource_group_location}"
+}
+
+locals {
+  # Ids for multiple sets of EC2 instances, merged together
+  deployment_rg = "${var.resource_group_preallocated == "1" ? element(concat(azurerm_resource_group.cluster_rg.*.name, list("")),0) : var.resource_group_name}"
 }
 
 module "vnet" {
@@ -15,8 +21,9 @@ module "vnet" {
   address_space   = "${var.address_space}"
   subnet_prefixes = ["${var.subnet_prefix}"]
 
-  resource_group_name     = "${var.resource_group_name}"
+  resource_group_name     = "${var.resource_group_preallocated == "0" ? element(concat(azurerm_resource_group.cluster_rg.*.name, list("")), 0) : var.resource_group_name}"
   resource_group_location = "${var.resource_group_location}"
+  resource_group_preallocated = "${var.resource_group_preallocated}"
   subnet_names            = ["${var.cluster_name}-aks-subnet"]
   subnet_prefixes         = ["${var.subnet_prefixes}"]
 
@@ -40,7 +47,8 @@ module "aks-gitops" {
   gitops_poll_interval     = "${var.gitops_poll_interval}"
   ssh_public_key           = "${var.ssh_public_key}"
   resource_group_location  = "${var.resource_group_location}"
-  resource_group_name      = "${azurerm_resource_group.cluster_rg.name}"
+  resource_group_name      = "${var.resource_group_preallocated == "0" ? element(concat(azurerm_resource_group.cluster_rg.*.name, list("")), 0) : var.resource_group_name}"
+  resource_group_preallocated = "${var.resource_group_preallocated}"
   service_principal_id     = "${var.service_principal_id}"
   service_principal_secret = "${var.service_principal_secret}"
   vnet_subnet_id           = "${module.vnet.vnet_subnet_ids[0]}"

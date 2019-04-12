@@ -49,6 +49,10 @@ variable "resource_group_location" {
   type = "string"
 }
 
+variable "resource_group_preallocated" {
+  type = "string"
+}
+
 variable "service_principal_id" {
   type = "string"
 }

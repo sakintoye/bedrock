@@ -3,6 +3,7 @@ module "aks" {
 
   resource_group_name      = "${var.resource_group_name}"
   resource_group_location  = "${var.resource_group_location}"
+  resource_group_preallocated = "${var.resource_group_preallocated}"
   cluster_name             = "${var.cluster_name}"
   agent_vm_count           = "${var.agent_vm_count}"
   agent_vm_size            = "${var.agent_vm_size}"

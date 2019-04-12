@@ -5,6 +5,10 @@ variable "resource_group_name" {
     type = "string"
 }
 
+variable "resource_group_preallocated" {
+  type = "string"
+}
+
 variable "cluster_name" {
     type = "string"
     default = "bedrockaks"
@@ -34,7 +38,7 @@ variable "agent_vm_size" {
 
 variable "kubernetes_version" {
     type = "string"
-    default = "1.13.5"
+    default = "1.12.7"
 }
 
 variable "admin_user" {

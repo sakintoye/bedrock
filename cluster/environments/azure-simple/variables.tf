@@ -48,6 +48,11 @@ variable "resource_group_location" {
   type = "string"
 }
 
+variable "resource_group_preallocated" {
+  type = "string"
+  default = "0"
+}
+
 variable "ssh_public_key" {
   type = "string"
 }

@@ -5,11 +5,16 @@ variable "vnet_name" {
 
 variable "resource_group_name" {
   description = "Default resource group name that the network will be created in."
-  default     = "myapp-rg"
+  type = "string"
 }
 
 variable "resource_group_location" {
   description = "Default resource group location that the resource group will be created in. The full list of Azure regions can be found at https://azure.microsoft.com/regions"
+  type = "string"
+}
+
+variable "resource_group_preallocated" {
+  type = "string"
 }
 
 variable "address_space" {
