@@ -47,7 +47,7 @@ There is also a [script](./scripts/create_service_principal_with_subscription_ro
 A frequent scenario will be that a user does not have `Owner` privileges on a subscription, or just as likely, there is a desire to limit the scope of a paritcular service principal.  As mentioned in the [link](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) above, a service principal can have varying roles to various resources.  Below outlines a couple of likely scenarios:
 
 - [Deploying to a Single Resource Group](#deploy-to-a-single-resource-group)
-- [Deploying to a Single Resource Group with Shared Infrastructure](#deploy-to-a-single-resource-group-with-shared-infrastructure)
+- [Deploying to a Pre-Allocated Resource Group with Shared Infrastructure](#deploy-to-a-single-resource-group-with-shared-infrastructure)
 
 ### Deploying to a Single Resource Group
 
@@ -82,4 +82,6 @@ $ az ad sp create-for-rbac --role owner --scopes /subscriptions/1234bca0-abcd-44
 One can also use this [script](./scripts/allocate_resource_group_contributor.sh) to allocate a resource group and a service principal with control of that resource group.
 
 To ensure the resource group does not get deleted while doing a `terraform destroy`, set the variable `resource_group_preallocated=1` in your `tfvars` file.
+
+To do the deployment, just specify the `resource_group` and `resource_group_location` in your `tfvars` file.
 
