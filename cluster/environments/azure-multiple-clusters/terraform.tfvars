@@ -1,51 +1,61 @@
-subscription_id = "azure subscription id"
-
-tenant_id = "AAD tenant id"
-
-login_service_principal_id = "replace with service principal with owner role in azure subscription"
-
-login_service_principal_password = "replace me with service principal password"
-
-traffic_manager_profile_name = "spinprofile"
-
-traffic_manager_dns_name = "spintmdns"
-
-traffic_manager_resource_group_name = "global-rg"
-
-traffic_manager_resource_group_location = "centralus"
-
-west_resource_group_name = "spin-west-rg"
-
-west_resource_group_location = "westus2"
-
-east_resource_group_name = "spin-east-rg"
-
-east_resource_group_location = "eastus2"
-
-central_resource_group_name = "spin-central-rg"
-
-central_resource_group_location = "centralus"
-
+#--------------------------------------------------------------
+# Cluster common
+#--------------------------------------------------------------
 cluster_name = "spincluster"
 
 agent_vm_count = "3"
 
 dns_prefix = "spindns"
 
-service_principal_id = "<replace me>"
+service_principal_id = ""
 
-service_principal_secret = "<replace me>"
+service_principal_secret = ""
 
 ssh_public_key = ""
 
-gitops_ssh_url = ""
+#--------------------------------------------------------------
+# Flux gitops common
+#--------------------------------------------------------------
+gitops_ssh_url = "git@github.com:sarath-p/vote-flux.git"
 
 gitops_ssh_key = ""
 
-gitops_east_path = ""
+gitops_poll_interval = "5m"
 
-gitops_central_path = ""
+#--------------------------------------------------------------
+# Traffic Manager
+#--------------------------------------------------------------
+traffic_manager_profile_name = ""
+
+traffic_manager_dns_name = ""
+
+traffic_manager_resource_group_name = ""
+
+traffic_manager_resource_group_location = ""
+
+#--------------------------------------------------------------
+# West
+#--------------------------------------------------------------
+west_resource_group_name = ""
+
+west_resource_group_location = ""
 
 gitops_west_path = ""
 
-gitops_poll_interval = "5m"
+#--------------------------------------------------------------
+# East
+#--------------------------------------------------------------
+east_resource_group_name = ""
+
+east_resource_group_location = ""
+
+gitops_east_path = ""
+
+#--------------------------------------------------------------
+# Central
+#--------------------------------------------------------------
+central_resource_group_name = ""
+
+central_resource_group_location = ""
+
+gitops_central_path = ""

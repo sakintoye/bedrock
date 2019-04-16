@@ -2,12 +2,9 @@
 
 [![Build Status](https://dev.azure.com/epicstuff/bedrock/_apis/build/status/Microsoft.bedrock?branchName=master)](https://dev.azure.com/epicstuff/bedrock/_build/latest?definitionId=54&branchName=master)
 
-This project is our humble attempt to combine the collective wisdom of the cloud native community for 
-building best practice cloud native Kubernetes clusters, based on real world experiences 
-deploying and operating applications and Kubernetes clusters.
+This project is our humble attempt to combine the collective wisdom of the cloud native community for building best practice cloud native Kubernetes clusters, based on real world experiences deploying and operating applications and Kubernetes clusters.
 
-Bedrock is a set of automation, tooling, and infrastructure for deploying production-level Kubernetes
-clusters with a secure and auditable [GitOps](https://www.weave.works/blog/gitops-operations-by-pull-request) workflow.  
+Bedrock is a set of automation, tooling, and infrastructure for deploying production-level Kubernetes clusters with a secure and auditable [GitOps](https://www.weave.works/blog/gitops-operations-by-pull-request) workflow.  
 
 In our implementation of this methodology, you build a [Fabrikate](https://github.com/Microsoft/fabrikate) high level deployment definition of what should be deployed in your cluster. We believe that defining your deployment at this higher level of abstraction is less error prone than directly editing resource manifest files or cobbling together shell scripts to build resource manifests from Helm templates, and allows you to leverage common pieces across many deployments and to share structure amongst different clusters differentiated by config.
 
@@ -25,6 +22,12 @@ A Bedrock deployment follows three general steps at a high level:
 
 Our cluster creation templates include deployments of a [cloud-native stack](https://github.com/timfpark/fabrikate-cloud-native) by default.  This is intended to be replaced with your own resource manifest repo, but you can also take advantage of this by jumping directly to step #3 if you'd like to give Bedrock a try before defining your own deployment.
 
+The easiest way to try Bedrock is to start with our [azure-simple](https://github.com/Microsoft/bedrock/tree/master/cluster/environments/azure-simple) deployment template or with [minikube](https://github.com/Microsoft/bedrock/tree/master/cluster/environments/minikube) to try it locally.   
+
+## Community
+
+[Please join us on Slack](https://publicslack.com/slacks/https-bedrockco-slack-com/invites/new) for discussion and/or questions.
+
 ## Contributing
 
 We do not claim to have all the answers and would greatly appreciate your ideas and pull requests.
@@ -41,4 +44,4 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-For project related questions or comments, please contact [Tim Park](https://github.com/timfpark).
+For project level questions, please contact [Tim Park](mailto:tpark@microsoft.com).
